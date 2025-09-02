@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { fetchNoteById } from "@/lib/api";
 import Modal from "@/components/Modal/Modal";
-// import css from "./../../../../../../components/NotePreview/NotePreview.module.css";
 import css from "./note-preview.module.css";
 
 export default function NotePreview({ id }: { id: string }) {
@@ -20,7 +19,7 @@ export default function NotePreview({ id }: { id: string }) {
     refetchOnMount: false,
   });
 
-  const onClose = () => router.back(); // закрыть = вернуться на фон
+  const onClose = () => router.back();
 
   return (
     <Modal onClose={onClose}>
@@ -31,6 +30,7 @@ export default function NotePreview({ id }: { id: string }) {
           <>
             <h2 className={css.title}>{note.title}</h2>
             <p className={css.content}>{note.content}</p>
+            <p className={css.tag}>{note.tag}</p>
             <p className={css.date}>{note.createdAt}</p>
           </>
         )}
